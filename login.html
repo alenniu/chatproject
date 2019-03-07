@@ -95,6 +95,11 @@ function login(){
   });
 
 }
+         firebase.auth().onAuthStateChanged(function(user) {
+                if (user != null) {
+                    window.location.replace("testwithdb.html");
+                }
+            });
 
 function logout(){
   firebase.auth().signOut();
