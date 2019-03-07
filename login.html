@@ -40,7 +40,7 @@
   };
   firebase.initializeApp(config);
     </script>
-  <script>
+    <script>
       function signin() {
             console.log("Signing in");
             var provider = new firebase.auth.GoogleAuthProvider();
@@ -54,7 +54,52 @@
             });
             
         
-       
+       firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    // User is signed in.
+
+    document.getElementById("user_div").style.display = "block";
+    document.getElementById("login_div").style.display = "none";
+
+    var user = firebase.auth().currentUser;
+
+    if(user != null){
+
+      var email_id = user.email;
+      document.getElementById("user_para").innerHTML = "Welcome User : " + email_id;
+
+    }
+
+  } else {
+    // No user is signed in.
+
+    document.getElementById("user_div").style.display = "none";
+    document.getElementById("login_div").style.display = "block";
+
+  }
+});
+
+function login(){
+
+  var userEmail = document.getElementById("email_field").value;
+  var userPass = document.getElementById("password_field").value;
+
+  firebase.auth().signInWithEmailAndPassword(userEmail, userPass).catch(function(error) {
+    // Handle Errors here.
+    var errorCode = error.code;
+    var errorMessage = error.message;
+
+    window.alert("Error : " + errorMessage);
+
+    // ...
+  });
+
+}
+
+function logout(){
+  firebase.auth().signOut();
+}
+
         
     </script>
 <body>
@@ -81,11 +126,11 @@
 					
 					<div class="p-t-31 p-b-9">
 						<span class="txt1">
-							Username
+							Email
 						</span>
 					</div>
-					<div class="wrap-input100 validate-input" data-validate = "Username is required">
-						<input class="input100" type="text" name="username" >
+					<div class="wrap-input100 validate-input" data-validate = "Email is required">
+						<input class="input100" type="text" name="username" id="email_field" >
 						<span class="focus-input100"></span>
 					</div>
 					
@@ -99,12 +144,12 @@
 						</a>
 					</div>
 					<div class="wrap-input100 validate-input" data-validate = "Password is required">
-						<input class="input100" type="password" name="pass" >
+						<input class="input100" type="password" name="pass" id="password_field">
 						<span class="focus-input100"></span>
 					</div>
 
 					<div class="container-login100-form-btn m-t-17">
-						<button class="login100-form-btn">
+						<button class="login100-form-btn" onclick="login()">
 							Sign In
 						</button>
 					</div>
