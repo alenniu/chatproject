@@ -40,14 +40,18 @@
   };
   firebase.initializeApp(config);
     </script>
-  <script>
+ <script>
       function signin() {
             console.log("Signing in");
             var provider = new firebase.auth.GoogleAuthProvider();
             firebase.auth().signInWithRedirect(provider).then(function(result) {  
             });
         }
-        
+        firebase.auth().onAuthStateChanged(user => {
+  if(user) {
+    window.location = 'testwithdb.html'; //After successful login, user will be redirected to home.html
+  }
+});
        
     </script>
 <body>
