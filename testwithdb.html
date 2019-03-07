@@ -1,9 +1,23 @@
 <html>
+<body>
 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<div id="demobox">
+  
+ 
+
+</div>
+
+<div style="padding-left:16px">
+  <h2>Top Navigation Example</h2>
+  <p>Some content..</p>
+</div>
+
+</body>
    
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     
-   <script src="https://www.gstatic.com/firebasejs/5.7.3/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.8.5/firebase.js"></script>
 <script>
   // Initialize Firebase
   var config = {
@@ -127,8 +141,64 @@
     </script>
 
     <body>
-        <button onclick="signin()">Sign in</button>
-        <button onclick="signout()">Sign out</button>
+    <!--  <button id="signin" onclick="signin()">Sign in</button> -->
+        <a href="login.html" class="button" id="signin">Sign in</a>
+        <button id="signout" onclick="signout()">Sign out</button>
+        
+        <style>
+            
+           
+        #signin {
+  background-color: #7FFF00;
+  border: none;
+  color: white;
+  padding: 9px 16px;
+  text-align: center;
+  font-size: 16px;
+  margin: 4px 2px;
+  opacity: 0.6;
+  transition: 0.3s;
+  display: inline-block;
+  text-decoration: none;
+  cursor: pointer;
+            position: absolute;
+            top: -4px;
+            right:115px;
+}
+
+#signin:hover {opacity: 1}
+            
+             #signout {
+  background-color: #f4511e;
+  border: none;
+  color: white;
+  padding: 9px 16px;
+  text-align: center;
+  font-size: 16px;
+  margin: 4px 2px;
+  opacity: 0.6;
+  transition: 0.3s;
+  display: inline-block;
+  text-decoration: none;
+  cursor: pointer;
+                  position: absolute;
+            top: -4px;
+            right:10px;
+}
+
+#signout:hover {opacity: 1}
+        </style>
+        
+       <style>
+      #demobox {
+  background-color: #DCDCDC ;
+          position: relative;
+          width:2000px;
+          top: -10px;
+          left:-10px;
+  padding: 19px ;
+ 
+}</style>
     
         <form>
             Tweet:<br>
