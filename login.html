@@ -47,9 +47,17 @@
             firebase.auth().signInWithRedirect(provider).then(function(result) {  
             });
         }
-	    firebase.auth().onAuthStateChanged(user => {
+        
+        firebase.auth().onAuthStateChanged(user => {
   if(user) {
-    window.location = 'home.html'; //After successful login, user will be redirected to home.html
+    window.location = 'testwithdb.html'; //After successful login, user will be redirected to home.html
+  }
+            
+             this.firebase.auth.signInWithRedirect(this.authProvider)
+      .then( success => {
+        this.router.navigate(['testwithdb']); // <-- NEVER REACHED
+      })
+      .catch( error => console.error('ERROR', error));
   }
 });
     </script>
